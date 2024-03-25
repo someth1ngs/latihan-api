@@ -1,0 +1,19 @@
+{
+  "name": "latihanapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.3",
+    "pg-pool": "^3.6.1"
+  }
+}
