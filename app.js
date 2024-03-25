@@ -34,7 +34,7 @@ app.get('/tasks/:id', async (req, res, next) => {
 app.post('/tasks', async (req, res, next) => {
     const { description, deadline, priority, is_completed } = req.body;
     try {
-        const newTask = await pool.query('INSERT INTO tasks (description, deadline, priority, is_completed) VALUES ($1, $2, $3, $4)', [description, deadline, priority, is_completed]);
+        const newTask = await pool.query('INSERT INTO tasks (description, deadline, priority, is_completed) VALUES ($1, $2, $3, $4) RETURNING *', [description, deadline, priority, is_completed]);
         res.json(newTask.rows[0]);
     } catch (err) {
         next(err);
@@ -55,7 +55,7 @@ app.put('/tasks/:id', async (req, res, next) => {
 app.delete('/tasks/:id', async (req, res, next) => {
     const id = req.params.id;
     try {
-        const deletedTask = await pool.query('DELETE FROM tasks WHERE id = $1', [id]);
+        const deletedTask = await pool.query('DELETE FROM tasks WHERE id = $1 RETURNING *', [id]);
         res.json({ message: 'Resource deleted successfully' });
     } catch (err) {
         next(err);
