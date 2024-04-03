@@ -9,7 +9,10 @@ POST http://localhost:3000/v1/tasks
 Content-Type: application/json
 
 {
-
+    "description": "test baru",
+    "deadline": "test baru",
+    "priority": 2,
+    "is_completed": true
 }
 
 ### Updating a resource

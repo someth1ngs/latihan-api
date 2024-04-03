@@ -52,6 +52,34 @@ paths:
       tags:
         - "Tasks"
       summary: Creating a Resource
+      description: Mendaftarkan Tasks baru
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: test baru
+                deadline:
+                  type: string
+                  example: test baru
+                priority:
+                  type: integer
+                  example: 2
+                is_completed:
+                  type: boolean
+                  example: true
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 1
+
   /tasks/{id}:
     get:
       tags:
