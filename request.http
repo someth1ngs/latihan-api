@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### Deleting a Resource
-DELETE http://localhost:3000/v1/tasks/10
+DELETE http://localhost:3000/v1/tasks/9

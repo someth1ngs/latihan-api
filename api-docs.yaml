@@ -5,7 +5,7 @@ info:
   contact:
     email: adewanggan@gmail.com
 servers:
-  - url: http://localhost:3000/api/v1
+  - url: http://localhost:3000/v1
 tags:
   - name: Tasks
     description: Everything about your Tasks
@@ -118,7 +118,7 @@ paths:
           name: id
           in: path
           required: true
-      description: Mengedit Tasks baru
+      description: Mengedit Tasks
       requestBody:
         content:
           application/json:
@@ -138,7 +138,7 @@ paths:
                   type: boolean
                   example: true
       responses:
-        "201":
+        "200":
           description: Success
           content:
             application/json:
@@ -160,3 +160,25 @@ paths:
                   is_completed:
                     type: boolean
                     example: true
+    delete:
+      tags:
+        - "Tasks"
+      summary: Deleting a resource
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      description: Menghapus Tasks
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Resource deleted successfully
