@@ -1,22 +1,19 @@
 ### List All Resource
-GET http://localhost:3000/tasks
+GET http://localhost:3000/v1/tasks
 
 ### Getting a Resource
-GET http://localhost:3000/tasks/2
+GET http://localhost:3000/v1/tasks/2
 
 ### Creating a Resource
-POST http://localhost:3000/tasks
+POST http://localhost:3000/v1/tasks
 Content-Type: application/json
 
 {
-    "description": "test",
-    "deadline": "test",
-    "priority": 2,
-    "is_completed": false
+
 }
 
 ### Updating a resource
-PUT http://localhost:3000/tasks/1
+PUT http://localhost:3000/v1/tasks/11
 Content-Type: application/json
 
 {
@@ -27,4 +24,4 @@ Content-Type: application/json
 }
 
 ### Deleting a Resource
-DELETE http://localhost:3000/tasks/9
+DELETE http://localhost:3000/v1/tasks/10

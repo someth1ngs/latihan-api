@@ -1,0 +1,82 @@
+openapi: 3.0.1
+info:
+  title: Latihan API DOCUMENTATION
+  version: 1.0.0
+  contact:
+    email: adewanggan@gmail.com
+servers:
+  - url: http://localhost:3000/api/v1
+tags:
+  - name: Tasks
+    description: Everything about your Tasks
+paths:
+  /tasks:
+    get:
+      tags:
+        - "Tasks"
+      summary: List All Resource
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: array
+                    items:
+                      properties: 
+                        id:
+                          type: integer
+                          example: 2
+                        description:
+                          type: string
+                          example: Menyelesaikan laporan keuangan
+                        deadline:
+                          type: string
+                          example: 2024-03-31
+                        priority:
+                          type: integer
+                          example: 1
+                        is_completed:
+                          type: boolean
+                          example: false
+    post:
+      tags:
+        - "Tasks"
+      summary: Creating a Resource
+  /tasks/{id}:
+    get:
+      tags:
+        - "Tasks"
+      summary: Getting a Resource
+      parameters:
+        - schema:
+            type: integer
+          name: tasks_id
+          in: path
+          required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Data berhasil dicari
+                  data:
+                    type: integer
+                    example: 1
