@@ -1,0 +1,184 @@
+openapi: 3.0.1
+info:
+  title: Latihan API DOCUMENTATION
+  version: 1.0.0
+  contact:
+    email: adewanggan@gmail.com
+servers:
+  - url: http://localhost:3000/v1
+tags:
+  - name: Tasks
+    description: Everything about your Tasks
+paths:
+  /tasks:
+    get:
+      tags:
+        - "Tasks"
+      summary: List All Resource
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: array
+                    items:
+                      properties: 
+                        id:
+                          type: integer
+                          example: 2
+                        description:
+                          type: string
+                          example: Menyelesaikan laporan keuangan
+                        deadline:
+                          type: string
+                          example: 2024-03-31
+                        priority:
+                          type: integer
+                          example: 1
+                        is_completed:
+                          type: boolean
+                          example: false
+    post:
+      tags:
+        - "Tasks"
+      summary: Creating a Resource
+      description: Mendaftarkan Tasks baru
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: test
+                deadline:
+                  type: string
+                  example: test
+                priority:
+                  type: integer
+                  example: 1
+                is_completed:
+                  type: boolean
+                  example: false
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 1
+
+  /tasks/{id}:
+    get:
+      tags:
+        - "Tasks"
+      summary: Getting a Resource
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Data berhasil dicari
+                  data:
+                    type: integer
+                    example: 1
+    put:
+      tags:
+        - "Tasks"
+      summary: Updating a resource
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      description: Mengedit Tasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: test baru
+                deadline:
+                  type: string
+                  example: test baru
+                priority:
+                  type: integer
+                  example: 2
+                is_completed:
+                  type: boolean
+                  example: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 15
+                  description:
+                    type: string
+                    example: test baru
+                  deadline:
+                    type: string
+                    example: test baru
+                  priority:
+                    type: integer
+                    example: 2
+                  is_completed:
+                    type: boolean
+                    example: true
+    delete:
+      tags:
+        - "Tasks"
+      summary: Deleting a resource
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      description: Menghapus Tasks
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Resource deleted successfully
