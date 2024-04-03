@@ -61,16 +61,16 @@ paths:
               properties:
                 description:
                   type: string
-                  example: test baru
+                  example: test
                 deadline:
                   type: string
-                  example: test baru
+                  example: test
                 priority:
                   type: integer
-                  example: 2
+                  example: 1
                 is_completed:
                   type: boolean
-                  example: true
+                  example: false
       responses:
         "201":
           description: Success
@@ -88,7 +88,7 @@ paths:
       parameters:
         - schema:
             type: integer
-          name: tasks_id
+          name: id
           in: path
           required: true
       responses:
@@ -108,3 +108,55 @@ paths:
                   data:
                     type: integer
                     example: 1
+    put:
+      tags:
+        - "Tasks"
+      summary: Updating a resource
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      description: Mengedit Tasks baru
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: test baru
+                deadline:
+                  type: string
+                  example: test baru
+                priority:
+                  type: integer
+                  example: 2
+                is_completed:
+                  type: boolean
+                  example: true
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 15
+                  description:
+                    type: string
+                    example: test baru
+                  deadline:
+                    type: string
+                    example: test baru
+                  priority:
+                    type: integer
+                    example: 2
+                  is_completed:
+                    type: boolean
+                    example: true
